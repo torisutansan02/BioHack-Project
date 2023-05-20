@@ -18,26 +18,13 @@ export default function Home() {
 
         <div className = {styles.description}>
           <p>
-            This is our project for the Biohack competition.
+            Welcome to the Biohack questionnaire. Our program will determine which type of specialist you should visit.
           </p>
         </div>
 
         <div className = {styles.description}>
           <a>
             We will periodically update this page..
-          </a>
-        </div>
-
-        <div className = {styles.description}>
-          <a>
-            <gmbbg>
-              <Image
-                src = "/images/IMG_0390.png" 
-                alt = "" 
-                width = {300} 
-                height = {200} 
-              />
-            </gmbbg>
           </a>
         </div>
       </main>
