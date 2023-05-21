@@ -1,4 +1,4 @@
-import { FaSquare } from 'react-icons/fa';
+import { FaSquare } from "react-icons/fa";
 import Answer from '@/Questions/answer';
 const labels = ["a", "b", "c", "d", "e"];
 
