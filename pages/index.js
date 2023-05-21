@@ -242,7 +242,7 @@ export default function Home({exercises}) {
                             </p>
                             
                             <a>
-                              If you score a 4 or above for any of the following, please click Specialists. <br></br>
+                              If you score a 3.5 or above for any of the following, please click Specialists below. <br></br>
                             </a>
 
                             <br></br>
