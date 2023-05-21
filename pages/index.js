@@ -37,7 +37,7 @@ export function getQuestions (exerciseId) {
     },
     {
       id : 0,
-      exerciseId: 0,
+      exerciseId: 2,
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
@@ -45,7 +45,7 @@ export function getQuestions (exerciseId) {
     },
     {
       id : 0,
-      exerciseId: 0,
+      exerciseId: 3,
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
@@ -104,36 +104,38 @@ export default function Home({exercises}) {
         </div>
 
         <div className = {styles.code}>
-        {!isExerciseShown ? (
-                <ExerciseList
-                    exercises={exercises}
-                    func={showExercise}
-                />
-            ) : isExerciseDone ? (
-                <div>
-                    <p className="my-4">
-                        You answered {score}/{questions.length}{" "}
-                        correctly!{" "}
-                    </p>
+                <main className="">
+                    {!isExerciseShown ? (
+                        <ExerciseList
+                            exercises={exercises}
+                            func={showExercise}
+                        />
+                    ) : isExerciseDone ? (
+                        <div>
+                            <p className="my-4">
+                                You answered {score}/{questions.length}{" "}
+                                correctly!{" "}
+                            </p>
 
-                    <button
-                        className="flex items-center gap-1 bg-gray-400 p-2 rounded-sm shadow-md text-white"
-                        onClick={hideExercise}
-                    >
-                        <span>
-                            <FaArrowLeft />
-                        </span>
-                        <span> Back </span>
-                    </button>
-                </div>
-            ) : (
-                <Questions
-                    questions={questions}
-                    hideExercise={hideExercise}
-                    finishTest={finishTest}
-                />
-            )}
-        </div>
+                            <button
+                                className="flex items-center gap-1 bg-gray-400 p-2 rounded-sm shadow-md text-white"
+                                onClick={hideExercise}
+                            >
+                                <span>
+                                    <FaArrowLeft />
+                                </span>
+                                <span>Back</span>
+                            </button>
+                        </div>
+                    ) : (
+                        <Questions
+                            questions={questions}
+                            hideExercise={hideExercise}
+                            finishTest={finishTest}
+                        />
+                    )}
+                </main>
+            </div>
         
         <Socials />
 

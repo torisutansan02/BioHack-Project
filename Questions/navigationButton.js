@@ -1,8 +1,8 @@
 export default function NavigationButton({state, moveQuestion}) {
     const {currentQuestion, answers, numberOfQuestions} = state;
     const buttonStyles = {
-        disabled: "bg-blue-500 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed",
-        active: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full",
+        disabled: "bg-blue-300 text-black font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed",
+        active: "bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full",
     };
     
     const getButton = (direction) => {
@@ -14,7 +14,7 @@ export default function NavigationButton({state, moveQuestion}) {
                     {
                         currentQuestion !== numberOfQuestions - 1 
                         ? "Next" 
-                        : " Finish"
+                        : "Finish"
                     }
                 </button>
             );

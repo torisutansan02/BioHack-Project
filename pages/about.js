@@ -13,7 +13,9 @@ function About() {
                 </div>
                 <div className = {styles.description}>
                     <p>
-                        The purpose of our project is to create a multiple choice test to determine who might be the best specialist to visit near UCR.
+                        The purpose of our project is to create a multiple choice test to determine who might be the best Dental specialist to visit near UCR.
+                        Our algorithm is based on a point system. We use a test similar to the MBTI for patients to make informed decisions when consulting their
+                        general dentist.
                     </p>
                 </div>
 

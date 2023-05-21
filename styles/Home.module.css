@@ -64,7 +64,10 @@
 }
 
 .code {
-  font-weight: 300;
+  width: 0.5;
+  position: relative;
+  justify-content: center;
+  font-weight: 500;
   font-family: var(--font-mono);
 }
 

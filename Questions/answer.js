@@ -1,4 +1,5 @@
-export default function Answer (props) {
+export default function Answer (props) 
+{
     const {icon, answerQuestion, answerText, answerValue} = props;
 
 return (
