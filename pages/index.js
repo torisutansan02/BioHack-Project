@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import { useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from 'react-icons/fa';
 import { Inter } from '@next/font/google'
 import ExerciseList from '@/components/exerciseList';
 import Questions from '@/Questions/question';
@@ -242,7 +242,7 @@ export default function Home({exercises}) {
                             </p>
                             
                             <a>
-                              If you score a 4 or above for any of the following, please click "Specialists". <br></br>
+                              If you score a 4 or above for any of the following, please click Specialists. <br></br>
                             </a>
 
                             <br></br>
