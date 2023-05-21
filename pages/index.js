@@ -33,23 +33,23 @@ export function getQuestions (exerciseId) {
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      orthoAnswer: "a",
+      endoAnswer: true,
     },
     {
       id : 0,
-      exerciseId: 2,
+      exerciseId: 0,
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      endoAnswer: "a",
+      oralAnswer: true,
     },
     {
       id : 0,
-      exerciseId: 3,
+      exerciseId: 0,
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      perioAnswer: "a",
+      perioAnswer: true,
     },
   ];
   return questions.filter((items) => items.exerciseId === exerciseId);
@@ -65,7 +65,7 @@ export default function Home({exercises}) {
   };
 
   const [state, setState] = useState(initialState);
-  const {isExerciseDone, isExerciseShown, questions, endoScore, perioScore, orthoScore} = state;
+  const {isExerciseDone, isExerciseShown, questions, endoScore, perioScore, orthoScore, oralScore, prosthoScore, generalScore} = state;
 
   const showExercise = (id) => {
     setState({
@@ -80,13 +80,16 @@ export default function Home({exercises}) {
     setState(initialState);
   };
 
-  const finishTest = (endoScore, perioScore, orthoScore) => {
+  const finishTest = (endoScore, perioScore, orthoScore, oralScore, prosthoScore, generalScore) => {
     setState({
       ...state,
       isExerciseDone: true,
       endoScore,
       perioScore,
       orthoScore,
+      oralScore,
+      prosthoScore,
+      generalScore,
     });
   };
   return (
@@ -115,9 +118,12 @@ export default function Home({exercises}) {
                     ) : isExerciseDone ? (
                         <div>
                             <p className="my-4">
-                                Ortho Score: {orthoScore} {" "}
-                                Endo Score: {endoScore} {" "}
-                                Perio Score: {perioScore} {" "}
+                                Ortho Score: {orthoScore} {"\n"} <br></br>
+                                Endo Score: {endoScore} {"\n"} <br></br>
+                                Perio Score: {perioScore} {"\n"} <br></br>
+                                Oral Score: {oralScore} {"\n"} <br></br>
+                                Prostho Score: {prosthoScore} {"\n"} <br></br>
+                                General Score: {generalScore} {"\n"} <br></br>
                             </p>
 
                             <button
