@@ -3,7 +3,8 @@ import Answers from '@/Questions/answers';
 import NavigationButton  from '@/Questions/navigationButton';
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function Questions({questions, hideExercise, finishTest}) {
+export default function Questions({questions, hideExercise, finishTest}) 
+{
     const initialState = {
         currentQuestion: 0,
         answers: [],
@@ -16,18 +17,24 @@ export default function Questions({questions, hideExercise, finishTest}) {
     const question = questions[currentQuestion];
 
     const submitAnswer = () => {
-        let totalScore = 0;
+        let endoScore = 0;
+        let perioScore = 0;
+        let orthoScore = 0;
         for (let i = 0; i < questions.length; i++) {
-            if (answers[i] === questions[i].correctAnswer) totalScore++;
+            if (answers[i] === questions[i].endoAnswer) endoScore++;
+            else if (answers[i] === questions[i].perioAnswer) perioScore++;
+            else if (answers[i] === questions[i].orthoAnswer) orthoScore++;
         }
-        finishTest(totalScore);
+        finishTest(endoScore, perioScore, orthoScore);
     };
+
     const answerQuestion = (answer) => {
         answers[currentQuestion] = answer;
         setState({
             ...state, answers
         });
     };
+
     const moveQuestion = (direction) => {
         switch(direction) {
             case "next" : {

@@ -33,7 +33,7 @@ export function getQuestions (exerciseId) {
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      correctAnswer: "a",
+      orthoAnswer: "a",
     },
     {
       id : 0,
@@ -41,7 +41,7 @@ export function getQuestions (exerciseId) {
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      correctAnswer: "a",
+      endoAnswer: "a",
     },
     {
       id : 0,
@@ -49,7 +49,7 @@ export function getQuestions (exerciseId) {
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      correctAnswer: "a",
+      perioAnswer: "a",
     },
   ];
   return questions.filter((items) => items.exerciseId === exerciseId);
@@ -65,7 +65,7 @@ export default function Home({exercises}) {
   };
 
   const [state, setState] = useState(initialState);
-  const {isExerciseDone, isExerciseShown, questions, score} = state;
+  const {isExerciseDone, isExerciseShown, questions, endoScore, perioScore, orthoScore} = state;
 
   const showExercise = (id) => {
     setState({
@@ -80,11 +80,13 @@ export default function Home({exercises}) {
     setState(initialState);
   };
 
-  const finishTest = (score) => {
+  const finishTest = (endoScore, perioScore, orthoScore) => {
     setState({
       ...state,
       isExerciseDone: true,
-      score,
+      endoScore,
+      perioScore,
+      orthoScore,
     });
   };
   return (
@@ -113,8 +115,9 @@ export default function Home({exercises}) {
                     ) : isExerciseDone ? (
                         <div>
                             <p className="my-4">
-                                You answered {score}/{questions.length}{" "}
-                                correctly!{" "}
+                                Ortho Score: {orthoScore} {" "}
+                                Endo Score: {endoScore} {" "}
+                                Perio Score: {perioScore} {" "}
                             </p>
 
                             <button
