@@ -1,11 +1,11 @@
 import { FaSquare } from "react-icons/fa";
-import Answer from '@/Questions/answer'
-const labels = ["a", "b", "c", "d", "e"]
+import Answer from '@/Questions/answer';
+const labels = ["a", "b", "c", "d", "e"];
 
 export default function Answers ({answers, state, answerQuestion}) {
     const {currentQuestion} = state;
     const getIcon = (answer) => {
-        return answer === state.answers(currentQuestion) ? (
+        return answer === state.answers[currentQuestion] ? (
             <FaSquare />
         ) : (
             <FaSquare color = "white" className = "border border-black" />
@@ -23,5 +23,6 @@ export default function Answers ({answers, state, answerQuestion}) {
                 answerValue = {labels[i]}
             />
         ))}
-    </ul>)
+    </ul>
+    );
 }

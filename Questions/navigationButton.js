@@ -4,8 +4,6 @@ export default function NavigationButton({state, moveQuestion}) {
         disabled: "bg-blue-500 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed",
         active: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full",
     };
-
-    const {disabled: x, active: y} = buttonStyles;
     
     const getButton = (direction) => {
         if (direction === "next") {
@@ -16,29 +14,32 @@ export default function NavigationButton({state, moveQuestion}) {
                     {
                         currentQuestion !== numberOfQuestions - 1 
                         ? "Next" 
-                        : "Finish"
+                        : " Finish"
                     }
                 </button>
             );
         }
-        else {
+        else 
+        {
             if (currentQuestion === 0) {
-                return <button className = {x} > Previous </button>
+                return <button className = {x}> Previous </button>;
             }
             else {
                 return (
                     <button className = {y} onClick = {() => moveQuestion("prev")}>
                         Previous
                     </button>
-                )
+                );
             }
         }
     };
+
+    const {disabled: x, active: y} = buttonStyles;
 
     return (
         <div className = "flex gap-2 m-2">
             {getButton("prev")}
             {getButton("next")}
         </div>
-    )
+    );
 }

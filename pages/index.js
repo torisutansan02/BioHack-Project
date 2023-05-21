@@ -1,40 +1,71 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '@/styles/Home.module.css';
 
-import Link from 'next/link'
-import Navbar from '../components/Navbar'
+import Link from 'next/link';
+import Navbar from '../components/Navbar';
 import { useState } from "react";
-import ExerciseList from '@/components/exerciseList'
-import Questions from '@/Questions/question'
+import { FaArrowLeft } from "react-icons/fa";
+import { Inter } from '@next/font/google'
+import ExerciseList from '@/components/exerciseList';
+import Questions from '@/Questions/question';
+import Socials from '@/components/Socials';
+
+const inter = Inter({ subsets: ['latin'] })
 
 export function getServerSideProps() {
   const exercises = [
-    { title: "Dental Specialists", id: 0}
+    { title: "Dental Specialists", id: 0 },
   ];
+
   return {
     props: {
       exercises,
     },
-  }
+  };
 }
 
 export function getQuestions (exerciseId) {
   const questions = [
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      correctAnswer: "a",
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      correctAnswer: "a",
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      correctAnswer: "a",
+    },
   ];
   return questions.filter((items) => items.exerciseId === exerciseId);
 }
 
-export default function Home(exercises) {
+export default function Home({exercises}) {
   const initialState = {
     isExerciseShown: false,
     exercideId: null,
     questions: [],
     isExerciseDone: false,
     score: 0
-  }
+  };
+
   const [state, setState] = useState(initialState);
-  const {isExerciseDone, exerciseId, isExerciseShown, questions, score} = state;
+  const {isExerciseDone, isExerciseShown, questions, score} = state;
 
   const showExercise = (id) => {
     setState({
@@ -42,17 +73,19 @@ export default function Home(exercises) {
       exerciseId: id,
       questions: getQuestions(id),
       isExerciseShown: true,
-    })
-  }
-  const hideExercise = () => {
-    setState(initialState)
+    });
   };
+
+  const hideExercise = () => {
+    setState(initialState);
+  };
+
   const finishTest = (score) => {
     setState({
       ...state,
       isExerciseDone: true,
       score,
-    })
+    });
   };
   return (
     <>
@@ -70,34 +103,40 @@ export default function Home(exercises) {
           </p>
         </div>
 
-        <div className = {styles.description}>
-          <a>
-            We will periodically update this page..
-          </a>
-        </div>
-
+        <div className = {styles.code}>
         {!isExerciseShown ? (
-          <ExerciseList />
-        ) : isExerciseDone ? (
-          <div> 
-            <p className = "my-4">
-              Score = {score} / {questions.length} {" "}
-            </p> 
+                <ExerciseList
+                    exercises={exercises}
+                    func={showExercise}
+                />
+            ) : isExerciseDone ? (
+                <div>
+                    <p className="my-4">
+                        You answered {score}/{questions.length}{" "}
+                        correctly!{" "}
+                    </p>
 
-            <button onClick = {() => hideExercise()} className = "flex items-center gap-1 bg-gray-400 p-2 rounded-sm shadow-md text-white">
-              <span>
-                <FaArrowLeft />
-              </span>
-              <span> Back </span>
-            </button>
-          </div>
-        ) : (
-          //<div> Questions </div>
-          <Questions
-           questions = {questions}
-           hideExercise = {hideExercise}
-          finishTest = {finishTest}/>
-        )}
+                    <button
+                        className="flex items-center gap-1 bg-gray-400 p-2 rounded-sm shadow-md text-white"
+                        onClick={hideExercise}
+                    >
+                        <span>
+                            <FaArrowLeft />
+                        </span>
+                        <span> Back </span>
+                    </button>
+                </div>
+            ) : (
+                <Questions
+                    questions={questions}
+                    hideExercise={hideExercise}
+                    finishTest={finishTest}
+                />
+            )}
+        </div>
+        
+        <Socials />
+
       </main>
   </>
   )
