@@ -203,7 +203,7 @@ export default function Home({exercises}) {
   return (
     <>
       <Head>
-        <title>torisutansan</title>
+        <title> Biohack Project </title>
       </Head>
 
       <Navbar />
