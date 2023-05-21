@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import { useState } from "react";
 import ExerciseList from '@/components/exerciseList'
+import Questions from '@/Questions/question'
 
 export function getServerSideProps() {
   const exercises = [
@@ -43,8 +44,16 @@ export default function Home(exercises) {
       isExerciseShown: true,
     })
   }
-  const hideExercise = () => {}
-  const finishTest = () => {}
+  const hideExercise = () => {
+    setState(initialState)
+  };
+  const finishTest = (score) => {
+    setState({
+      ...state,
+      isExerciseDone: true,
+      score,
+    })
+  };
   return (
     <>
       <Head>
@@ -70,10 +79,24 @@ export default function Home(exercises) {
         {!isExerciseShown ? (
           <ExerciseList />
         ) : isExerciseDone ? (
-          <div> Score Result </div>
+          <div> 
+            <p className = "my-4">
+              Score = {score} / {questions.length} {" "}
+            </p> 
+
+            <button onClick = {() => hideExercise()} className = "flex items-center gap-1 bg-gray-400 p-2 rounded-sm shadow-md text-white">
+              <span>
+                <FaArrowLeft />
+              </span>
+              <span> Back </span>
+            </button>
+          </div>
         ) : (
           //<div> Questions </div>
-          <Questions questions = {questions}/>
+          <Questions
+           questions = {questions}
+           hideExercise = {hideExercise}
+          finishTest = {finishTest}/>
         )}
       </main>
   </>
