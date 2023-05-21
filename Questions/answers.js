@@ -2,9 +2,12 @@ import { FaSquare } from "react-icons/fa";
 import Answer from '@/Questions/answer';
 const labels = ["a", "b", "c", "d", "e"];
 
-export default function Answers ({answers, state, answerQuestion}) {
+export default function Answers ({answers, state, answerQuestion}) 
+{
     const {currentQuestion} = state;
-    const getIcon = (answer) => {
+    
+    const getIcon = (answer) => 
+    {
         return answer === state.answers[currentQuestion] ? (
             <FaSquare />
         ) : (
