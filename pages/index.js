@@ -33,13 +33,37 @@ export function getQuestions (exerciseId) {
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      generalAnswer: true,
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "The alignment and positioning of your teeth and jaws is causing discomfort in your teeth.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      orthoAnswer: true,
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are seeking treatment for any gum diseases related issues, such as sensitivity or decay.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      perioAnswer: true,
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You have irritating pain inside the soft layer of your tooth (pulp) that needs to be disinfected immediately, necessitating endodontic treatment.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
       endoAnswer: true,
     },
     {
       id : 0,
       exerciseId: 0,
       question:
-        "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
+        "You are experiencing pain throughout your teeth due to pathological conditions.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
       oralAnswer: true,
     },
@@ -47,9 +71,9 @@ export function getQuestions (exerciseId) {
       id : 0,
       exerciseId: 0,
       question:
-        "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
+        "You have missing or damaged teeth that need to be replaced or repaired.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      perioAnswer: true,
+      prosthoAnswer: true,
     },
   ];
   return questions.filter((items) => items.exerciseId === exerciseId);
@@ -65,7 +89,7 @@ export default function Home({exercises}) {
   };
 
   const [state, setState] = useState(initialState);
-  const {isExerciseDone, isExerciseShown, questions, endoScore, perioScore, orthoScore, oralScore, prosthoScore, generalScore} = state;
+  const {isExerciseDone, isExerciseShown, questions, endoScore, perioScore, orthoScore, oralScore, prosthoScore, generalScore, totalScore} = state;
 
   const showExercise = (id) => {
     setState({
@@ -80,7 +104,7 @@ export default function Home({exercises}) {
     setState(initialState);
   };
 
-  const finishTest = (endoScore, perioScore, orthoScore, oralScore, prosthoScore, generalScore) => {
+  const finishTest = (endoScore, perioScore, orthoScore, oralScore, prosthoScore, generalScore, totalScore) => {
     setState({
       ...state,
       isExerciseDone: true,
@@ -90,8 +114,10 @@ export default function Home({exercises}) {
       oralScore,
       prosthoScore,
       generalScore,
+      totalScore,
     });
   };
+
   return (
     <>
       <Head>
@@ -104,18 +130,24 @@ export default function Home({exercises}) {
 
         <div className = {styles.description}>
           <p>
-            Welcome to the Biohack questionnaire. Our program will determine which type of specialist you should visit.
+            Welcome to the Dental Specialist questionnaire. Our program is designed to help assist you in making an informed choice
+            when consulting your general dentist about what type of dental specialist you may want to speak to.
           </p>
         </div>
 
         <div className = {styles.code}>
                 <main className="">
-                    {!isExerciseShown ? (
+                    {
+                    !isExerciseShown ? 
+                    (
                         <ExerciseList
                             exercises={exercises}
                             func={showExercise}
                         />
-                    ) : isExerciseDone ? (
+                    ) : 
+                    
+                    isExerciseDone ? 
+                    (
                         <div>
                             <p className="my-4">
                                 Ortho Score: {orthoScore} {"\n"} <br></br>
@@ -123,8 +155,30 @@ export default function Home({exercises}) {
                                 Perio Score: {perioScore} {"\n"} <br></br>
                                 Oral Score: {oralScore} {"\n"} <br></br>
                                 Prostho Score: {prosthoScore} {"\n"} <br></br>
-                                General Score: {generalScore} {"\n"} <br></br>
+                                General Score: {generalScore} {"\n"} <br></br> <br></br>
+                                Your score from {totalScore} questions.
                             </p>
+                            
+                            <a>
+                              If you score a 4 or above for any of the following, please click the link below. <br></br>
+                            </a>
+
+                            <br></br>
+
+                            <div className={styles.grid}>
+                              <a
+                              href="/specialists"
+                              className={styles.card}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              >
+                              <p className="flex items-center bg-gray-300 p-2 text-black">
+                                Specialists <span>-&gt;</span>
+                              </p>
+                              </a>
+                            </div>
+                            
+                            <br></br>
 
                             <button
                                 className="flex items-center gap-1 bg-gray-400 p-2 rounded-sm shadow-md text-white"
@@ -133,14 +187,14 @@ export default function Home({exercises}) {
                                 <span>
                                     <FaArrowLeft />
                                 </span>
-                                <span>Back</span>
+                                <span> Return </span>
                             </button>
                         </div>
                     ) : (
                         <Questions
-                            questions={questions}
-                            hideExercise={hideExercise}
-                            finishTest={finishTest}
+                            questions = {questions}
+                            hideExercise = {hideExercise}
+                            finishTest = {finishTest}
                         />
                     )}
                 </main>
