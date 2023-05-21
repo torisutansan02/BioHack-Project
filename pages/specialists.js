@@ -1,6 +1,7 @@
-import Navbar from '../components/Navbar'
-import styles from '@/styles/Home.module.css'
-import Link from 'next/link'
+import Navbar from '../components/Navbar';
+import styles from '@/styles/Home.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
 import Socials from '@/components/Socials';
 
 import { Inter } from '@next/font/google'
@@ -11,8 +12,12 @@ function Specialist() {
         <>
             <Navbar />
             <div className = {styles.main}>
-                <p> We will provide resources to you if you score a 4 or above for the quiz. </p>
-
+                <div className = {styles.description}>
+                <p> 
+                    If you score above a 4 for any of the types of specialists, please make an appointment with one
+                    of these dental offices.
+                </p>
+                </div>
                 
             <div className={styles.grid}>
                 <a
@@ -108,7 +113,24 @@ function Specialist() {
             </div>
 
             </div>
+
+            <div className = {styles.description}>
+              <a>
+                <gmbbg>
+                  <Image
+                    src = "/images/teeth.jpg" 
+                    alt = "" 
+                    width = {300} 
+                    height = {200} 
+                  />
+                </gmbbg>
+              </a>
+            </div>
+
+            <br></br>
+
             <Socials />
+
         </>
     );
 }

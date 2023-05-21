@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export function getServerSideProps() {
   const exercises = [
-    { title: "Dental Specialists", id: 0 },
+    { title: "[ Click Here ]", id: 0 },
   ];
 
   return {
@@ -33,15 +33,7 @@ export function getQuestions (exerciseId) {
       question:
         "You are experiencing discomfort throughout your mouth due to plaque buildup in your teeth.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      generalAnswer: true,
-    },
-    {
-      id : 0,
-      exerciseId: 0,
-      question:
-        "The alignment and positioning of your teeth and jaws is causing discomfort in your teeth.",
-      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      orthoAnswer: true,
+      generalAnswer: true
     },
     {
       id : 0,
@@ -49,15 +41,15 @@ export function getQuestions (exerciseId) {
       question:
         "You are seeking treatment for any gum diseases related issues, such as sensitivity or decay.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      perioAnswer: true,
+      perioAnswer: true
     },
     {
       id : 0,
       exerciseId: 0,
       question:
-        "You have irritating pain inside the soft layer of your tooth (pulp) that needs to be disinfected immediately, necessitating endodontic treatment.",
+        "You have extreme pain inside the soft layer of your tooth (pulp) that needs to be disinfected immediately, necessitating endodontic treatment.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      endoAnswer: true,
+      endoAnswer: true
     },
     {
       id : 0,
@@ -65,7 +57,25 @@ export function getQuestions (exerciseId) {
       question:
         "You are experiencing pain throughout your teeth due to pathological conditions.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      oralAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing extreme pain potentially due to wisdom teeth and/or tooth decay",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
       oralAnswer: true,
+      prosthoAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "The alignment and positioning of your teeth and jaws is causing you pain.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      orthoAnswer: true,
+      prosthoAnswer: true
     },
     {
       id : 0,
@@ -73,7 +83,79 @@ export function getQuestions (exerciseId) {
       question:
         "You have missing or damaged teeth that need to be replaced or repaired.",
       answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
-      prosthoAnswer: true,
+      prosthoAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You have sensitive/bleeding gums that are causing you pain.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      perioAnswer: true,
+      endoAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "The alignment and positioning of your teeth and jaws is causing you discomfort.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      orthoAnswer: true,
+      oralAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing pain from your teeth because of nerve/tissue (pulp) damage within the tooth, otherwise known as tooth decay.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      endoAnswer: true,
+      oralAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing extreme pain from your teeth because of nerve/tissue (pulp) damage within the tooth, otherwise known as tooth decay.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      endoAnswer: true,
+      oralAnswer: true,
+      orthoAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing pain potentially due to wisdom teeth and/or tooth decay",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      endoAnswer: true,
+      oralAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "The alignment and positioning of your teeth and jaws is causing you extreme pain.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      orthoAnswer: true,
+      oralAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You are experiencing discomfort potentially due to wisdom teeth and/or tooth decay",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      oralAnswer: true
+    },
+    {
+      id : 0,
+      exerciseId: 0,
+      question:
+        "You have sensitive/bleeding gums that are causing you extreme pain.",
+      answers: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"],
+      oralAnswer: true,
+      endoAnswer: true
     },
   ];
   return questions.filter((items) => items.exerciseId === exerciseId);
@@ -160,7 +242,7 @@ export default function Home({exercises}) {
                             </p>
                             
                             <a>
-                              If you score a 4 or above for any of the following, please click the link below. <br></br>
+                              If you score a 4 or above for any of the following, please click "Specialists". <br></br>
                             </a>
 
                             <br></br>
@@ -172,9 +254,9 @@ export default function Home({exercises}) {
                               target="_blank"
                               rel="noopener noreferrer"
                               >
-                              <p className="flex items-center bg-gray-300 p-2 text-black">
+                              <a>
                                 Specialists <span>-&gt;</span>
-                              </p>
+                              </a>
                               </a>
                             </div>
                             
