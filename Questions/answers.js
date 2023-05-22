@@ -9,9 +9,9 @@ export default function Answers ({answers, state, answerQuestion})
     const getIcon = (answer) => 
     {
         return answer === state.answers[currentQuestion] ? (
-            <FaSquare />
+            <FaSquare color = "grey"/>
         ) : (
-            <FaSquare color = "black" className = "border border-grey" />
+            <FaSquare color = "white" className = "border border-blue" />
         );
     };
 
