@@ -11,7 +11,7 @@ export default function Answers ({answers, state, answerQuestion})
         return answer === state.answers[currentQuestion] ? (
             <FaSquare color = "grey"/>
         ) : (
-            <FaSquare color = "white" className = "border border-blue" />
+            <FaSquare color = "white" className = "border border-black" />
         );
     };
 
