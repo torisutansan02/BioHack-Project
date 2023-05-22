@@ -103,6 +103,13 @@ export default function Questions({questions, hideExercise, finishTest})
                 oralScore = oralScore / oralCounter;
                 prosthoScore = prosthoScore / prosthoCounter;
                 generalScore = generalScore / generalCounter;
+
+                endoScore = Math.round(endoScore * 10) / 10;
+                perioScore= Math.round(perioScore * 10) / 10;
+                orthoScore = Math.round(orthoScore * 10) / 10;
+                oralScore = Math.round(oralScore * 10) / 10;
+                prosthoScore = Math.round(prosthoScore * 10) / 10;
+                generalScore = Math.round(generalScore * 10) / 10;
             }
             totalScore++;
         }
